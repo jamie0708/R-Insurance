@@ -3,7 +3,7 @@ module.exports = {
        reply_markup: JSON.stringify({
            inline_keyboard: [
                [{text: 'Оформить полис 📄', callback_data: '/polis'}], 
-               [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/The_Devil_JSM'}],
+               [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insuranceuzb'}],
                [{text: 'Контакты 📞', callback_data: '/contacts'}],
                [{text: 'Изменить язык 🌐', callback_data: '/language'}],
            ]
@@ -21,11 +21,7 @@ module.exports = {
    fizRuOpt: {
        reply_markup: JSON.stringify({
            inline_keyboard: [
-               [{text: 'Отправить тех.паспорт автомобиля', callback_data: '/techpassport'}], 
-               [{text: 'Отправить паспорт заявителя', callback_data: '/requisite'}],
-               [{text: 'Указать телефонный номер', callback_data: '/phone-number'}], 
-               [{text: 'Указать дату начала страхования', callback_data: '/date'}],
-               [{text: 'Отправить скриншот оплаты', callback_data: '/payment'}],
+               [{text: 'Отправить данные', callback_data: '/fizInfo'}]
            ]
        })
    },
@@ -33,11 +29,7 @@ module.exports = {
    yurRuOpt: {
        reply_markup: JSON.stringify({
            inline_keyboard: [
-                [{text: 'Отправить тех.паспорт автомобиля', callback_data: '/techpassport'}],
-                [{text: 'Отправить реквизиты организации', callback_data: '/requisite'}],
-                [{text: 'Указать телефонный номер', callback_data: '/phone-number'}], 
-                [{text: 'Указать дату начала страхования', callback_data: '/date'}],
-                [{text: 'Отправить скриншот оплаты', callback_data: '/payment'}],
+                [{text: 'Отправить данные', callback_data: '/yurInfo'}]
            ]
        })
    },

@@ -1,11 +1,8 @@
 //IMPORTS:
 const TelegramApi = require('node-telegram-bot-api');
 const {
-  startCommand,
   commands,
-  locCommand,
   btnCommands,
-  btnLocCommand,
   btnRecieveCommands
 } = require('./bot_commands');
 
@@ -27,8 +24,9 @@ const {
 //DATA:
 const token = '5221401286:AAGqaPWjwhzZfvPgdX_AqiRXpHXL5nhzgXY'; //@InsuranceUZBOT
 const moderator = 927953904; //Aziz
-const admin = 69875236; //Rustam
+const superAdmin = 69875236; //Rustam
 const group = -732005497; //BotTest
+const admin =  5260387729;//InsuranceUZB
 const manager = 353327; //Vazira
 
 //BOT:
@@ -90,11 +88,8 @@ const start = async () => {
     btnCommands(bot, delMsg, data, `/yur`, chatId, `${setRu.yur}`, yurRuOpt);
     btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`)
     btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`)
-    btnRecieveCommands(bot, data, `/techpassport`, chatId, `${setRu.techpassport}`, moderator, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам фото-копию тех.пасспорта 👇🏻`);
-    btnRecieveCommands(bot, data, `/phone-number`, chatId, `${setRu.phone}`, moderator, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) указал свой номер телефона 👇🏻`);
-    btnRecieveCommands(bot, data, `/requisite`, chatId, `${setRu.requisite}`, moderator, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам реквизиты организации 👇🏻`);
-    btnRecieveCommands(bot, data, `/date`, chatId, `${setRu.date}`, moderator, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) указал дату начала страхования 👇🏻`);
-    btnRecieveCommands(bot, data, `/payment`, chatId, `${setRu.payment}`, moderator, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам скриншот оплаты 👇🏻`);
+    btnRecieveCommands(bot, data, `/fizInfo`, chatId, `${setRu.techpassport}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.techpassport}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     // else if (data == "/main" || data === "/main@InsuranceUZBOT") {
     //   await bot.deleteMessage(chatId, msg.message.message_id)
     //   await bot.sendMessage(chatId, `${msg.from.first_name}, приветствуем вас в официальном телеграм боте страховой компании Gross Insurance!`, commandsRuOpt);
