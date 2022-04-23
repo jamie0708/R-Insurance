@@ -36,6 +36,9 @@ const bot = new TelegramApi(token, {
 
 //SETTING:
 const start = async () => {
+  bot.on('connection', (stream) => {
+    console.log('someone connected!');
+  });
 
   //Commands:
   bot.setMyCommands([{
