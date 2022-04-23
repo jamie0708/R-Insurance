@@ -19,7 +19,8 @@ const {
   polisRuOpt,
   yurRuOpt,
   fizRuOpt,
-  consultingRuOpt
+  consultingRuOpt,
+  contactsRuOpt
 } = require('./options');
 
 //DATA:
@@ -72,9 +73,9 @@ const start = async () => {
 
     commands(bot, text, '/start', chatId, `${settingLangs.text}`, setLang, 'https://www.gazeta.uz/media/img/2019/06/Q8wEZU15614395927082_b.jpg');
     commands(bot, text, '/polis', chatId, `Давайте оформим ваш полис!`, polisRuOpt);
-    commands(bot, text, '/contacts', chatId, `${setRu.contacts}`, );
+    commands(bot, text, '/contacts', chatId, `${setRu.contacts}`, contactsRuOpt);
     commands(bot, text, '/consulting', chatId, `${setRu.consulting}`, consultingRuOpt);
-    // commands(bot, text, '/language', chatId, `Давайте оформим ваш полис!`, polisRuOpt);
+    commands(bot, text, '/language', chatId, `${settingLangs.text}`, setLang);
   });
 
   //Buttons' menu:
@@ -90,8 +91,10 @@ const start = async () => {
     btnCommands(bot, delMsg, data, `/polis`, chatId, `${setRu.polis}`, polisRuOpt);
     btnCommands(bot, delMsg, data, `/fiz`, chatId, `${setRu.fiz}`, fizRuOpt);
     btnCommands(bot, delMsg, data, `/yur`, chatId, `${setRu.yur}`, yurRuOpt);
-    btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`)
-    btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`)
+    btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`, contactsRuOpt);
+    btnCommands(bot, delMsg, data, `/backContacts`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`);
+    btnCommands(bot, delMsg, data, `/language`, chatId, `${settingLangs.text}`, setLang);
     btnRecieveCommands(bot, data, `/fizInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     // else if (data == "/main" || data === "/main@InsuranceUZBOT") {

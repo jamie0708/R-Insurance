@@ -3,7 +3,7 @@ module.exports = {
        reply_markup: JSON.stringify({
            inline_keyboard: [
                [{text: 'Оформить полис 📄', callback_data: '/polis'}], 
-               [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insuranceuzb'}],
+               [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insurance_on'}],
                [{text: 'Контакты 📞', callback_data: '/contacts'}],
                [{text: 'Изменить язык 🌐', callback_data: '/language'}],
            ]
@@ -21,7 +21,15 @@ module.exports = {
    consultingRuOpt: {
     reply_markup: JSON.stringify({
         inline_keyboard: [
-            [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insuranceuzb'}],
+            [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insurance_on'}],
+        ]
+    })
+   },
+
+   contactsRuOpt: {
+    reply_markup: JSON.stringify({
+        inline_keyboard: [
+            [{text: 'Назад 🔙', callback_data: '/backContacts'}],
         ]
     })
    },
