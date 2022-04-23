@@ -88,8 +88,8 @@ const start = async () => {
     btnCommands(bot, delMsg, data, `/yur`, chatId, `${setRu.yur}`, yurRuOpt);
     btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`)
     btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`)
-    btnRecieveCommands(bot, data, `/fizInfo`, chatId, `${setRu.techpassport}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
-    btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.techpassport}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, data, `/fizInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     // else if (data == "/main" || data === "/main@InsuranceUZBOT") {
     //   await bot.deleteMessage(chatId, msg.message.message_id)
     //   await bot.sendMessage(chatId, `${msg.from.first_name}, приветствуем вас в официальном телеграм боте страховой компании Gross Insurance!`, commandsRuOpt);
