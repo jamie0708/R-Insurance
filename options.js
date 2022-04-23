@@ -18,6 +18,14 @@ module.exports = {
     })
    },
 
+   consultingRuOpt: {
+    reply_markup: JSON.stringify({
+        inline_keyboard: [
+            [{text: 'Онлайн-консультант 👨‍💼', url: 'https://t.me/insuranceuzb'}],
+        ]
+    })
+   },
+
    fizRuOpt: {
        reply_markup: JSON.stringify({
            inline_keyboard: [

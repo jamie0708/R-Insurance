@@ -18,7 +18,8 @@ const {
   commandsRuOpt,
   polisRuOpt,
   yurRuOpt,
-  fizRuOpt
+  fizRuOpt,
+  consultingRuOpt
 } = require('./options');
 
 //DATA:
@@ -72,7 +73,7 @@ const start = async () => {
     commands(bot, text, '/start', chatId, `${settingLangs.text}`, setLang, 'https://www.gazeta.uz/media/img/2019/06/Q8wEZU15614395927082_b.jpg');
     commands(bot, text, '/polis', chatId, `Давайте оформим ваш полис!`, polisRuOpt);
     commands(bot, text, '/contacts', chatId, `${setRu.contacts}`, );
-    commands(bot, text, '/consulting', chatId, `${setRu.consulting}`, );
+    commands(bot, text, '/consulting', chatId, `${setRu.consulting}`, consultingRuOpt);
     // commands(bot, text, '/language', chatId, `Давайте оформим ваш полис!`, polisRuOpt);
   });
 

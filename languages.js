@@ -70,10 +70,7 @@ Tel: +998903255297
 Telegram: @insurance_rustamnazarov
 Instagram: @rustaminsurance`,
         
-        consulting: `Способы связи с нашим консультантом:
-Tel: +998903255297
-Telegram: @insurance_rustamnazarov
-Instagram: @rustaminsurance`,
+        consulting: `Связаться с онлайн консультантом 👇🏻`,
 
         infoRequest: `Пожалуйста отправьте вышеуказанные данные 👇🏻`,
     },

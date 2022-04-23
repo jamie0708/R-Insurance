@@ -18,25 +18,10 @@ exports.commands = async (bot, text, command, chat_id, message, form) => {
     }
 };
 
-exports.locCommand = async (bot, text, command, chat_id, message, location1, location2) => {
-    if (text === command || text === `${command}@InsuranceUZBOT`) {
-        await bot.sendMessage(chat_id, `${message}`);
-        await bot.sendLocation(chat_id, location1, location2);
-    }
-};
-
 exports.btnCommands = async (bot, del_msg, data, command, chat_id, message, form) => {
     if (data === command || data === `${command}@InsuranceUZBOT`) {
         await bot.deleteMessage(chat_id, del_msg);
         await bot.sendMessage(chat_id, message, form);
-    }
-};
-
-exports.btnLocCommand = async (bot, del_msg, data, command, chat_id, message, location1, location2) => {
-    if (data === command || data === `${command}@InsuranceUZBOT`) {
-        await bot.deleteMessage(chat_id, del_msg);
-        await bot.sendMessage(chat_id, message);
-        await bot.sendLocation(chat_id, location1, location2);
     }
 };
 
