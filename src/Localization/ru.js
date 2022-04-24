@@ -1,41 +1,12 @@
 module.exports = {
-    setLang: {
-        reply_markup: JSON.stringify({
-            inline_keyboard: [
-                [{
-                    text: '🇬🇧EN',
-                    callback_data: '/enLang'
-                }, {
-                    text: '🇷🇺RU',
-                    callback_data: '/ruLang'
-                }, {
-                    text: '🇺🇿UZ',
-                    callback_data: '/uzLang'
-                }, ]
-            ],
-        })
-    },
-
-    settingLangs: {
-        text: `🇬🇧Please choose the language:
-      
-🇷🇺Пожалуйста выберите язык:
-                  
-🇺🇿Iltimos bot tilini tanlang:`,
-    },
-
-    setEn: {
-        greeting: ', we are glad to welcome you on the official bot of the insurance company GROSS Insurance',
-        fiz: '',
-        yur: '',
-    },
-
     setRu: {
-        greeting: ', приветствуем Вас в Телеграм боте по онлайн оформлению ОСАГО',
+        greeting: `, рады приветствовать Вас в Телеграм боте по онлайн оформлению автострахования ОСАГО.
+        
+Пожалуйста выберите один из нижеданных 👇🏻`,
 
         polis: `Давайте оформим ваш полис:
 
-- Пожалуйста выберите тип оформления 👇🏻`,
+Пожалуйста выберите тип оформления 👇🏻`,
 
         fiz: `Для оформления E-полиса ОСАГО (для физ.лица) необходимо:
 
@@ -68,16 +39,9 @@ b) Картой: оплатить на карту 8600 5729 9350 0300 ‘Nazarov
         contacts: `Контактные данные: 
 Tel: +998 335 336 337
 Telegram: @insurance_on`,
-        
+
         consulting: `Связаться с онлайн консультантом 👇🏻`,
 
         infoRequest: `Пожалуйста отправьте вышеуказанные данные 👇🏻`,
     },
-
-
-    setUz: {
-        greeting: `, sizni GROSS Insurance kompaniyasining rasmiy telegram botida ko'rganimizdan xursandmiz!`,
-        fiz: '',
-        yur: '',
-    },
-}
+};

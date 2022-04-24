@@ -1,6 +1,3 @@
-const { reset } = require("nodemon");
-const { restart } = require("nodemon");
-
 exports.debug = (obj = {}) => {
     return JSON.stringify(obj, null, 4)
 };

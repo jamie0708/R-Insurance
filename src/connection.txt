@@ -1,0 +1,2 @@
+command: `ssh root@185.237.96.207`
+password: (double)`Devil007` 
