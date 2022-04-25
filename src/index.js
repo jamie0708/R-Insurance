@@ -40,6 +40,7 @@ const start = async () => {
   bot.on('message', async msg => {
     const text = msg.text;
     const chatId = msg.chat.id;
+    const delMsg = msg.message_id;
     console.log(msg);
 
     commands(bot, text, '/start', chatId, `${settingLangs.text}`, setLang);
@@ -57,27 +58,33 @@ const start = async () => {
     commands(bot, text, `Polis olish 📄`, chatId, `${setUz.polis}`, polisUzOpt);
 
     commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
-    commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
-    commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
+    // commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
+    // commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
 
     commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
-    commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
-    commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
+    // commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
+    // commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
 
     btnRecieveCommands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     btnRecieveCommands(bot, text, `Отправить данные 🏢`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
+    commands(bot, text, `Контакты 📞`, chatId, `${setRu.contacts}`, contactsRuOpt);
+    commands(bot, text, `Назад 🔙`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    commands(bot, text, `Назад ◀️`, chatId, `${setRu.polis}`, polisRuOpt);
+    commands(bot, text, `Главное меню 🏠`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+
+    commands(bot, text, `Консультант 👨‍💼`, chatId, `${setRu.consulting}`, consultingRuOpt);
+
+    commands(bot, text, `Изменить язык 🌐`, chatId, `${settingLangs.text}`, setLang);
   });
 
   //Buttons' menu:
   bot.on('callback_query', async msg => {
     const data = msg.text;
     const chatId = msg.message.chat.id;
-    const delMsg = msg.message.message_id;
     console.log(msg);
 
     btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`, contactsRuOpt);
-    btnCommands(bot, delMsg, data, `Назад 🔙`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
     btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`);
     btnCommands(bot, delMsg, data, `/language`, chatId, `${settingLangs.text}`, setLang);
     btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);

@@ -62,6 +62,9 @@ module.exports = {
                 }, {
                     text: 'Юридическое лицо 🏢',
                 }],
+                [{
+                    text: `Назад 🔙`,
+                }]
             ],
             resize_keyboard: true
         })
@@ -95,7 +98,7 @@ module.exports = {
 
     consultingRuOpt: {
         reply_markup: JSON.stringify({
-            keyboard: [
+            inline_keyboard: [
                 [{
                     text: 'Онлайн-консультант 👨‍💼',
                     url: 'https://t.me/insurance_on'
@@ -122,6 +125,14 @@ module.exports = {
                 [{
                     text: 'Отправить данные 🧑🏻‍🦱',
                     callback_data: '/fizInfo'
+                }, {
+                    text: `Отправить номер телефона 📱`,
+                    request_contact: true
+                }],
+                [{
+                    text: `Назад ◀️`
+                }, {
+                    text: `Главное меню 🏠`
                 }]
             ],
             resize_keyboard: true
@@ -134,6 +145,11 @@ module.exports = {
                 [{
                     text: 'Отправить данные 🏢',
                     callback_data: '/yurInfo'
+                }],
+                [{
+                    text: `Назад ◀️`
+                }, {
+                    text: `Главное меню 🏠`
                 }]
             ],
             resize_keyboard: true
