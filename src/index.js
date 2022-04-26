@@ -1,7 +1,7 @@
 //IMPORTS:
 const TelegramApi = require('node-telegram-bot-api');
 
-const { commands, btnCommands, btnRecieveCommands, } = require('./Settings/bot_commands');
+const { commands, btnRecieveCommands, } = require('./Settings/bot_commands');
 
 const { setLang, settingLangs, } = require('./Localization/languages');
 const { setEn } = require('./Localization/en')
@@ -16,9 +16,17 @@ const {
   polisEnOpt,
   polisUzOpt,
   yurRuOpt,
+  yurEnOpt,
+  yurUzOpt,
   fizRuOpt,
+  fizEnOpt,
+  fizUzOpt,
   consultingRuOpt,
+  consultingEnOpt,
+  consultingUzOpt,
   contactsRuOpt,
+  contactsEnOpt,
+  contactsUzOpt,  
 } = require('./Settings/options');
 
 //DATA:
@@ -28,11 +36,14 @@ const superAdmin = 69875236; //Rustam
 const group = -732005497; //BotTest
 const admin = 5260387729; //InsuranceUZB
 const manager = 353327; //Vazira
+const click_uz = `398062629:TEST:999999999_F91D8F69C042267444B74CC0B3C747757EB0E065` //CLICK Terminal TEST
 
 //BOT:
 const bot = new TelegramApi(token, {
   polling: true
 });
+
+bot.on("polling_error", (msg) => console.log(msg));
 
 //SETTING:
 const start = async () => {
@@ -58,38 +69,46 @@ const start = async () => {
     commands(bot, text, `Polis olish 📄`, chatId, `${setUz.polis}`, polisUzOpt);
 
     commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
-    // commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
-    // commands(bot, text, `Физическое лицо 🧑🏻‍🦱`, chatId, `${setRu.fiz}`, fizRuOpt);
+    commands(bot, text, `Individual person 🧑🏻‍🦱`, chatId, `${setEn.fiz}`, fizEnOpt);
+    commands(bot, text, `Jismoniy shaxs 🧑🏻‍🦱`, chatId, `${setUz.fiz}`, fizUzOpt);
 
     commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
-    // commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
-    // commands(bot, text, `Юридическое лицо 🏢`, chatId, `${setRu.yur}`, yurRuOpt);
+    commands(bot, text, `Legal person 🏢`, chatId, `${setEn.yur}`, yurEnOpt);
+    commands(bot, text, `Yuridik shaxs 🏢`, chatId, `${setUz.yur}`, yurUzOpt);
 
     btnRecieveCommands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, text, `Send data 🧑🏻‍🦱`, chatId, `${setEn.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, text, `Ma'lumotlarni yuborish 🧑🏻‍🦱`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+
     btnRecieveCommands(bot, text, `Отправить данные 🏢`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, text, `Send data 🏢`, chatId, `${setEn.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, text, `Ma'lumotlarni yuborish 🏢`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
     commands(bot, text, `Контакты 📞`, chatId, `${setRu.contacts}`, contactsRuOpt);
-    commands(bot, text, `Назад 🔙`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
-    commands(bot, text, `Назад ◀️`, chatId, `${setRu.polis}`, polisRuOpt);
-    commands(bot, text, `Главное меню 🏠`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    commands(bot, text, `Contacts 📞`, chatId, `${setEn.contacts}`, contactsEnOpt);
+    commands(bot, text, `Aloqa 📞`, chatId, `${setUz.contacts}`, contactsUzOpt);
 
     commands(bot, text, `Консультант 👨‍💼`, chatId, `${setRu.consulting}`, consultingRuOpt);
+    commands(bot, text, `Consultant 👨‍💼`, chatId, `${setEn.consulting}`, consultingEnOpt);
+    commands(bot, text, `Konsultant 👨‍💼`, chatId, `${setUz.consulting}`, consultingUzOpt);
 
     commands(bot, text, `Изменить язык 🌐`, chatId, `${settingLangs.text}`, setLang);
-  });
+    commands(bot, text, `Change language 🌐`, chatId, `${settingLangs.text}`, setLang);
+    commands(bot, text, `Tilni o'zgartirish 🌐`, chatId, `${settingLangs.text}`, setLang);
 
-  //Buttons' menu:
-  bot.on('callback_query', async msg => {
-    const data = msg.text;
-    const chatId = msg.message.chat.id;
-    console.log(msg);
+    commands(bot, text, `Назад 🔙`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    commands(bot, text, `Back 🔙`, chatId, `${msg.from.first_name} ${setEn.greeting}`, commandsEnOpt);
+    commands(bot, text, `Ortga 🔙`, chatId, `${msg.from.first_name} ${setUz.greeting}`, commandsUzOpt);
 
-    btnCommands(bot, delMsg, data, `/contacts`, chatId, `${setRu.contacts}`, contactsRuOpt);
-    btnCommands(bot, delMsg, data, `/consulting`, chatId, `${setRu.contacts}`);
-    btnCommands(bot, delMsg, data, `/language`, chatId, `${settingLangs.text}`, setLang);
-    btnRecieveCommands(bot, data, `/yurInfo`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
-    btnCommands(bot, delMsg, data, `🇷🇺RU`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    commands(bot, text, `Назад ◀️`, chatId, `${setRu.polis}`, polisRuOpt);
+    commands(bot, text, `Back ◀️`, chatId, `${setEn.polis}`, polisEnOpt);
+    commands(bot, text, `Ortga ◀️`, chatId, `${setUz.polis}`, polisUzOpt);
+
+    commands(bot, text, `Главное меню 🏠`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
+    commands(bot, text, `Main menu 🏠`, chatId, `${msg.from.first_name} ${setEn.greeting}`, commandsEnOpt);
+    commands(bot, text, `Bosh menyu 🏠`, chatId, `${msg.from.first_name} ${setUz.greeting}`, commandsUzOpt);
+
   });
-}
+};
 
 start();
