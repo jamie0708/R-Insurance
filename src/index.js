@@ -47,6 +47,34 @@ bot.on("polling_error", (msg) => console.log(msg));
 
 //SETTING:
 const start = async () => {
+
+  //Commands:
+  bot.setMyCommands([{
+    command: '/start',
+    description: 'Начало работы'
+  },
+  {
+    command: '/polis',
+    description: 'Оформите свой полис'
+  },
+  {
+    command: '/contacts',
+    description: 'Получите контактные данные'
+  },
+  {
+    command: '/consulting',
+    description: 'Получите онлайн консультацию'
+  },
+  {
+    command: '/language',
+    description: 'Выберите язык'
+  },
+  {
+    command: '/payment',
+    description: 'Оплатить за страхования'
+  },
+]);
+
   //Commands' menu:
   bot.on('message', async msg => {
     const text = msg.text;
@@ -107,7 +135,28 @@ const start = async () => {
     commands(bot, text, `Главное меню 🏠`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
     commands(bot, text, `Main menu 🏠`, chatId, `${msg.from.first_name} ${setEn.greeting}`, commandsEnOpt);
     commands(bot, text, `Bosh menyu 🏠`, chatId, `${msg.from.first_name} ${setUz.greeting}`, commandsUzOpt);
-
+    
+    if (text === `/payment` || text === `/payment@InsuranceUZBOT`) {
+      await bot.sendInvoice(
+        chatId, 
+        `Payment`, 
+        `This is a test payment`, 
+        `payload`, 
+        click_uz, 
+        `SOME_KEY`, 
+        `UZS`, 
+        [{
+          label:`insurance`,
+          amount: 300000000
+        }],
+        {
+          photo_url: `http://www.progressiveonline.com.au/wp-content/uploads/2021/12/pic-184.jpg`,
+          need_name: true,
+          need_phone_number: true,
+          need_email: true,
+        },
+      );
+  }
   });
 };
 
