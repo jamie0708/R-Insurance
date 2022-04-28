@@ -1,7 +1,7 @@
 //IMPORTS:
 const TelegramApi = require('node-telegram-bot-api');
 
-const { commands, btnRecieveCommands, } = require('./Settings/bot_commands');
+const { commands, btnRecieveCommands, paymentCommands, } = require('./Settings/bot_commands');
 
 const { setLang, settingLangs, } = require('./Localization/languages');
 const { setEn } = require('./Localization/en')
@@ -37,7 +37,7 @@ const group = -732005497; //BotTest
 const admin = 5260387729; //InsuranceUZB
 const manager = 353327; //Vazira
 const click_uz = `398062629:TEST:999999999_F91D8F69C042267444B74CC0B3C747757EB0E065` //CLICK Terminal TEST
-
+const pay_com_uz = `371317599:TEST:1651150575242`; //PayMe Terminal TEST
 //BOT:
 const bot = new TelegramApi(token, {
   polling: true
@@ -70,8 +70,12 @@ const start = async () => {
     description: 'Выберите язык'
   },
   {
-    command: '/payment',
-    description: 'Оплатить за страхования'
+    command: '/click',
+    description: 'Оплатить за страхования через CLICK'
+  },
+  {
+    command: '/payme',
+    description: 'Оплатить за страхования через PayMe'
   },
 ]);
 
@@ -79,7 +83,6 @@ const start = async () => {
   bot.on('message', async msg => {
     const text = msg.text;
     const chatId = msg.chat.id;
-    const delMsg = msg.message_id;
     console.log(msg);
 
     commands(bot, text, '/start', chatId, `${settingLangs.text}`, setLang);
@@ -87,6 +90,8 @@ const start = async () => {
     commands(bot, text, '/contacts', chatId, `${setRu.contacts}`, contactsRuOpt);
     commands(bot, text, '/consulting', chatId, `${setRu.consulting}`, consultingRuOpt);
     commands(bot, text, '/language', chatId, `${settingLangs.text}`, setLang);
+    paymentCommands(bot, text, '/click', chatId, click_uz, `UZS`, 100000);
+    paymentCommands(bot, text, '/payme', chatId, pay_com_uz, `UZS`, 100000);
 
     commands(bot, text, '🇷🇺RU', chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
     commands(bot, text, '🇬🇧EN', chatId, `${msg.from.first_name} ${setEn.greeting}`, commandsEnOpt);

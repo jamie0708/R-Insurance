@@ -37,26 +37,23 @@ exports.btnRecieveCommands = async (bot, data, command, chat_id, message, modera
     }
 };
 
-exports.paymentCommands = async (bot, text, command, chat_id, message, form) => {
-    if (text === `/payment` || text === `/payment@InsuranceUZBOT`) {
+exports.paymentCommands = async (bot, text, command, chat_id, provider, currency, amount) => {
+    if (text === command || text === `${command}@InsuranceUZBOT`) {
         await bot.sendInvoice(
-          chatId, 
+          chat_id, 
           `Payment`, 
           `This is a test payment`, 
           `payload`, 
-          click_uz, 
+          provider, 
           `SOME_KEY`, 
-          `UZS`, 
+          currency, 
           [{
             label:`insurance`,
-            amount: 300000000
+            amount: amount
           }],
           {
             photo_url: `http://www.progressiveonline.com.au/wp-content/uploads/2021/12/pic-184.jpg`,
-            need_name: true,
-            need_phone_number: true,
-            need_email: true,
           },
         );
     }
-}
+};
