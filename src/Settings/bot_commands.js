@@ -36,3 +36,27 @@ exports.btnRecieveCommands = async (bot, data, command, chat_id, message, modera
         }));
     }
 };
+
+exports.paymentCommands = async (bot, text, command, chat_id, message, form) => {
+    if (text === `/payment` || text === `/payment@InsuranceUZBOT`) {
+        await bot.sendInvoice(
+          chatId, 
+          `Payment`, 
+          `This is a test payment`, 
+          `payload`, 
+          click_uz, 
+          `SOME_KEY`, 
+          `UZS`, 
+          [{
+            label:`insurance`,
+            amount: 300000000
+          }],
+          {
+            photo_url: `http://www.progressiveonline.com.au/wp-content/uploads/2021/12/pic-184.jpg`,
+            need_name: true,
+            need_phone_number: true,
+            need_email: true,
+          },
+        );
+    }
+}
