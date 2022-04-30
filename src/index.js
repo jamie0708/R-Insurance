@@ -109,9 +109,9 @@ const start = async () => {
     commands(bot, text, `Legal person 🏢`, chatId, `${setEn.yur}`, yurEnOpt);
     commands(bot, text, `Yuridik shaxs 🏢`, chatId, `${setUz.yur}`, yurUzOpt);
 
-    btnRecieveCommands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
-    btnRecieveCommands(bot, text, `Send data 🧑🏻‍🦱`, chatId, `${setEn.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
-    btnRecieveCommands(bot, text, `Ma'lumotlarni yuborish 🧑🏻‍🦱`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    commands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.infoRequest}`);
+    commands(bot, text, `Send data 🧑🏻‍🦱`, chatId, `${setEn.infoRequest}`);
+    commands(bot, text, `Ma'lumotlarni yuborish 🧑🏻‍🦱`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
     btnRecieveCommands(bot, text, `Отправить данные 🏢`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     btnRecieveCommands(bot, text, `Send data 🏢`, chatId, `${setEn.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
