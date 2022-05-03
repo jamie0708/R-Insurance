@@ -182,4 +182,13 @@ module.exports = {
             resize_keyboard: true
         })
     },
+
+    phoneRuOpt: {
+        reply_markup: JSON.stringify({
+            keyboard: [
+                [{text: `Отправить мой номер`, request_contact: true, remove_keyboard: true}]
+            ],
+            resize_keyboard: true
+        })
+    }
 }

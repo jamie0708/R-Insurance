@@ -26,7 +26,8 @@ const {
   consultingUzOpt,
   contactsRuOpt,
   contactsEnOpt,
-  contactsUzOpt,  
+  contactsUzOpt,
+  phoneRuOpt,  
 } = require('./Settings/options');
 
 //DATA:
@@ -109,7 +110,7 @@ const start = async () => {
     commands(bot, text, `Legal person 🏢`, chatId, `${setEn.yur}`, yurEnOpt);
     commands(bot, text, `Yuridik shaxs 🏢`, chatId, `${setUz.yur}`, yurUzOpt);
 
-    commands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.infoRequest}`);
+    commands(bot, text, `Отправить данные 🧑🏻‍🦱`, chatId, `${setRu.phoneRequest}`, phoneRuOpt);
     commands(bot, text, `Send data 🧑🏻‍🦱`, chatId, `${setEn.infoRequest}`);
     commands(bot, text, `Ma'lumotlarni yuborish 🧑🏻‍🦱`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
