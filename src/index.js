@@ -39,6 +39,7 @@ const admin = 5260387729; //InsuranceUZB
 const manager = 353327; //Vazira
 const click_uz = `398062629:TEST:999999999_F91D8F69C042267444B74CC0B3C747757EB0E065` //CLICK Terminal TEST
 const pay_com_uz = `371317599:TEST:1651150575242`; //PayMe Terminal TEST
+
 //BOT:
 const bot = new TelegramApi(token, {
   polling: true

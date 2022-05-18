@@ -3,15 +3,15 @@ module.exports = {
         reply_markup: JSON.stringify({
             keyboard: [
                 [{
-                    text: '🇬🇧EN',
+                    text: `🇬🇧EN`,
                     callback_data: '/enLang',
                     resize_keyboard: true
                 }, {
-                    text: '🇷🇺RU',
+                    text: `🇷🇺RU`,
                     callback_data: '/ruLang',
                     resize_keyboard: true
                 }, {
-                    text: '🇺🇿UZ',
+                    text: `🇺🇿UZ`,
                     callback_data: '/uzLang',
                     resize_keyboard: true
                 }, ],

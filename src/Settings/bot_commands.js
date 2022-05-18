@@ -25,14 +25,16 @@ exports.btnCommands = async (bot, del_msg, data, command, chat_id, message, form
 exports.btnRecieveCommands = async (bot, data, command, chat_id, message, moderator, admin,  group, recMessage) => {
     if (data === command || data === `${command}@InsuranceUZBOT`) {
         bot.sendMessage(chat_id, message)
-        .then(bot.on('message', async msg => {
+        .then(bot.on('message', msg => {
             //  await bot.sendMessage(moderator, this.debug(msg))
-             await bot.sendMessage(moderator, recMessage);
-             await bot.forwardMessage(moderator, msg.chat.id, msg.message_id);
-             await bot.sendMessage(admin, recMessage);
-             await bot.forwardMessage(admin, msg.chat.id, msg.message_id);
-             await bot.sendMessage(group, recMessage);
-             await bot.forwardMessage(group, msg.chat.id, msg.message_id);
+            switch (val) {
+              case  msg.document ? bot.forwardMessage(moderator, msg.chat.id, msg.message_id) : bot.sendMessage(chat_id, `It's not a file`)
+            }
+            // bot.sendMessage(moderator, recMessage);            
+            // bot.sendMessage(admin, recMessage);
+            // bot.forwardMessage(admin, msg.chat.id, msg.message_id);
+            // bot.sendMessage(group, recMessage);
+            // bot.forwardMessage(group, msg.chat.id, msg.message_id);
         }));
     }
 };
