@@ -1,12 +1,25 @@
 //IMPORTS:
 const TelegramApi = require('node-telegram-bot-api');
 
-const { commands, btnRecieveCommands, paymentCommands, } = require('./Settings/bot_commands');
+const {
+  commands,
+  btnRecieveCommands,
+  paymentCommands,
+} = require('./Settings/bot_commands');
 
-const { setLang, settingLangs, } = require('./Localization/languages');
-const { setEn } = require('./Localization/en')
-const { setRu } = require('./Localization/ru')
-const { setUz } = require('./Localization/uz')
+const {
+  setLang,
+  settingLangs,
+} = require('./Localization/languages');
+const {
+  setEn
+} = require('./Localization/en')
+const {
+  setRu
+} = require('./Localization/ru')
+const {
+  setUz
+} = require('./Localization/uz')
 
 const {
   commandsRuOpt,
@@ -27,7 +40,7 @@ const {
   contactsRuOpt,
   contactsEnOpt,
   contactsUzOpt,
-  phoneRuOpt,  
+  phoneRuOpt,
 } = require('./Settings/options');
 
 //DATA:
@@ -52,40 +65,55 @@ const start = async () => {
 
   //Commands:
   bot.setMyCommands([{
-    command: '/start',
-    description: 'Начало работы'
-  },
-  {
-    command: '/polis',
-    description: 'Оформите свой полис'
-  },
-  {
-    command: '/contacts',
-    description: 'Получите контактные данные'
-  },
-  {
-    command: '/consulting',
-    description: 'Получите онлайн консультацию'
-  },
-  {
-    command: '/language',
-    description: 'Выберите язык'
-  },
-  {
-    command: '/click',
-    description: 'Оплатить за страхования через CLICK'
-  },
-  {
-    command: '/payme',
-    description: 'Оплатить за страхования через PayMe'
-  },
-]);
+      command: '/start',
+      description: 'Начало работы'
+    },
+    {
+      command: '/polis',
+      description: 'Оформите свой полис'
+    },
+    {
+      command: '/contacts',
+      description: 'Получите контактные данные'
+    },
+    {
+      command: '/consulting',
+      description: 'Получите онлайн консультацию'
+    },
+    {
+      command: '/language',
+      description: 'Выберите язык'
+    },
+    {
+      command: '/click',
+      description: 'Оплатить за страхования через CLICK'
+    },
+    {
+      command: '/payme',
+      description: 'Оплатить за страхования через PayMe'
+    },
+  ]);
 
   //Commands' menu:
   bot.on('message', async msg => {
     const text = msg.text;
     const chatId = msg.chat.id;
     console.log(msg);
+
+    bot.onText(/\/love/, function onLoveText(msg) {
+      const opts = {
+        reply_to_message_id: msg.message_id,
+        reply_markup: JSON.stringify({
+          keyboard: [
+            ['Yes, you are the bot of my life ❤'],
+            ['No, sorry there is another one...'],
+          ],
+          resize_keyboard: true
+        })
+      };
+      bot.sendMessage(msg.chat.id, 'Do you love me?', opts);
+    });
+    
 
     commands(bot, text, '/start', chatId, `${settingLangs.text}`, setLang);
     commands(bot, text, '/polis', chatId, `${setRu.polis}`, polisRuOpt);
@@ -115,7 +143,7 @@ const start = async () => {
     commands(bot, text, `Send data 🧑🏻‍🦱`, chatId, `${setEn.infoRequest}`);
     commands(bot, text, `Ma'lumotlarni yuborish 🧑🏻‍🦱`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
-    btnRecieveCommands(bot, text, `Отправить данные 🏢`, chatId, `${setRu.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
+    btnRecieveCommands(bot, text, `Отправить данные 🏢`, chatId, `${setRu.infoRequest}`, `message has been sent!`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     btnRecieveCommands(bot, text, `Send data 🏢`, chatId, `${setEn.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
     btnRecieveCommands(bot, text, `Ma'lumotlarni yuborish 🏢`, chatId, `${setUz.infoRequest}`, moderator, admin, group, `Пользователь ${msg.from.first_name} ${msg.from.last_name}(@${msg.from.username}) отправил вам данные 👇🏻`);
 
@@ -142,8 +170,8 @@ const start = async () => {
     commands(bot, text, `Главное меню 🏠`, chatId, `${msg.from.first_name} ${setRu.greeting}`, commandsRuOpt);
     commands(bot, text, `Main menu 🏠`, chatId, `${msg.from.first_name} ${setEn.greeting}`, commandsEnOpt);
     commands(bot, text, `Bosh menyu 🏠`, chatId, `${msg.from.first_name} ${setUz.greeting}`, commandsUzOpt);
-    
-    
+
+
   });
 };
 
